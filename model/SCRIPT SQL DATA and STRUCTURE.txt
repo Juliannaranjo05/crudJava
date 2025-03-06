@@ -1,0 +1,92 @@
+CREATE DATABASE GestionEventos;
+USE GestionEventos;
+
+SET FOREIGN_KEY_CHECKS = 0; 
+
+CREATE TABLE Usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    contraseña VARCHAR(255) NOT NULL,
+    telefono VARCHAR(20),
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE Categorias (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_categoria VARCHAR(100) UNIQUE NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE Eventos (
+    id_evento INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descripcion TEXT,
+    fecha_evento DATETIME NOT NULL,
+    ubicacion VARCHAR(255),
+    id_organizador INT NULL,
+    id_categoria INT NULL,
+    FOREIGN KEY (id_organizador) REFERENCES Usuarios(id_usuario) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (id_categoria) REFERENCES Categorias(id_categoria) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE Roles (
+    id_rol INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_rol VARCHAR(50) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+
+CREATE TABLE Usuario_Rol (
+    id_usuario INT,
+    id_rol INT,
+    PRIMARY KEY (id_usuario, id_rol),
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_rol) REFERENCES Roles(id_rol) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE Entradas (
+    id_entrada INT AUTO_INCREMENT PRIMARY KEY,
+    id_evento INT,
+    precio DECIMAL(10,2) NOT NULL,
+    cantidad_disponible INT NOT NULL,
+    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE Compras (
+    id_compra INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT,
+    id_entrada INT,
+    cantidad INT NOT NULL,
+    fecha_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_entrada) REFERENCES Entradas(id_entrada) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE Pagos (
+    id_pago INT AUTO_INCREMENT PRIMARY KEY,
+    id_compra INT,
+    metodo_pago ENUM('Tarjeta', 'PayPal', 'Efectivo') NOT NULL,
+    estado ENUM('Pendiente', 'Completado', 'Cancelado') DEFAULT 'Pendiente',
+    fecha_pago TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_compra) REFERENCES Compras(id_compra) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE Comentarios (
+    id_comentario INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT,
+    id_evento INT,
+    comentario TEXT NOT NULL,
+    fecha_comentario TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE Valoraciones (
+    id_valoracion INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT,
+    id_evento INT,
+    puntuacion INT CHECK (puntuacion BETWEEN 1 AND 5),
+    fecha_valoracion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+SET FOREIGN_KEY_CHECKS = 1
