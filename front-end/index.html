@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Frontend</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Usuarios</a>
+        <a href="categorias.html">Categorías</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="roles.html">Roles</a>
+        <a href="usuario_rol.html">Usuario Rol</a>
+        <a href="entradas.html">Entradas</a>
+        <a href="compras.html">Compras</a>
+        <a href="pagos.html">Pagos</a>
+        <a href="comentario.html">Comentarios</a>
+        <a href="valoraciones.html">Valoraciones</a>
+    </nav>
+    <h2>CRUD Frontend</h2>
+    <div class="form-container">
+        <input type="text" id="nombre" placeholder="Ingrese un nombre">
+        <button onclick="agregar()">Agregar</button>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>id_usuario</th>
+                    <th>nombre</th>
+                    <th>email</th>
+                    <th>contraseña</th>
+                    <th>telefono</th>
+                    <th>fecha_registro</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-body">
+                <!-- Los datos se insertarán aquí -->
+            </tbody>
+        </table>
+        <footer>
+            <p>Contacto: <a href="mailto:juliannaranjo58@gmail.com">juliannaranjo58@gmail.com</a></p>
+            <p>Teléfono: 3173897119</p>
+            <p>Instagram: <a href="https://www.instagram.com/julian_naranjo_8" target="_blank">@julian_naranjo_8</a></p>
+            <p>GitHub: <a href="https://github.com/Juliannaranjo05" target="_blank">Juliannaranjo05</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/julian-david-naranjo-pascuas" target="_blank">Julian David Naranjo Pascuas</a></p>
+            <p>&copy; 2024 Julian Naranjo. Todos los derechos reservados.</p>
+        </footer>
+</body>
+</html>
