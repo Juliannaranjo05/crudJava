@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="bienvenida">
+        <h1>Bienvenido a la pagina Username</h1>
+    </div>
+    <nav>
+        <div class="titulo">
+            <img src="../img/logov2.png" alt="Logo de la empresa" class="footer-logo">
+        </div>
+        <div class="navegador">
+            <a href="index.html">Inicio</a>
+            <a href="eventos.html">Eventos</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="inicioDeSesion">
+            <a href="inicioDeSesion.html">Iniciar Sesion</a>
+        </div>
+    </nav>
+    <article>
+        <div class="carrusel-3d">
+            <div class="carrusel-contenedor">
+              <div class="carrusel-item active">
+                <img src="../img/1551108267663.jpeg" alt="Imagen 1">
+              </div>
+              <div class="carrusel-item">
+                <img src="../img/images (2).jpeg" alt="Imagen 1">
+              </div>
+              <div class="carrusel-item">
+                <img src="../img/images (1).jpeg" alt="Imagen 3">
+              </div>
+              <div class="carrusel-item">
+                <img src="../img/descarga.jpeg" alt="Imagen 4">
+              </div>
+            </div>
+            <button class="carrusel-control prev" onclick="moverCarrusel(-1)">&#10094;</button>
+            <button class="carrusel-control next" onclick="moverCarrusel(1)">&#10095;</button>
+        </div>
+    </article>
+    <footer class="footer">
+        <div class="footer-contenedor">
+          <!-- Sección 1: Logo y descripción -->
+          <div class="footer-seccion">
+            <h1>Eventify</h1>
+            <p class="footer-descripcion">
+              Somos especialistas en la gestión de eventos. Ofrecemos soluciones personalizadas para hacer de tu evento una experiencia inolvidable.
+            </p>
+          </div>
+      
+          <!-- Sección 2: Enlaces rápidos -->
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Enlaces rápidos</h3>
+            <ul class="footer-lista">
+              <li><a href="#" class="footer-enlace">Inicio</a></li>
+              <li><a href="#" class="footer-enlace">Servicios</a></li>
+              <li><a href="#" class="footer-enlace">Eventos</a></li>
+              <li><a href="#" class="footer-enlace">Contacto</a></li>
+            </ul>
+          </div>
+      
+          <!-- Sección 3: Contacto -->
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Contacto</h3>
+            <ul class="footer-lista">
+              <li><i class="fas fa-map-marker-alt"></i> Dirección: Calle Falsa 123, Ciudad, País</li>
+              <li><i class="fas fa-phone"></i> Teléfono: +123 456 789</li>
+              <li><i class="fas fa-envelope"></i> Email: info@eventos.com</li>
+            </ul>
+          </div>
+      
+          <!-- Sección 4: Redes sociales -->
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Síguenos</h3>
+            <div class="footer-redes">
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Derechos de autor -->
+        <div class="footer-derechos">
+          <p>&copy; 2023 Gestión de Eventos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="../js/carrusel.js"></script>
+</body>
+</html>

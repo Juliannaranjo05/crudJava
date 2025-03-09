@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="titulo">
+            <img src="../img/logov2.png" alt="Logo de la empresa" class="footer-logo">
+        </div>
+        <div class="navegador">
+            <a href="index.html">Inicio</a>
+            <a href="eventos.html">Eventos</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="inicioDeSesion">
+            <a href="inicioDeSesion.html">Iniciar Sesion</a>
+        </div>
+    </nav>
+    <section class="contacto">
+        <h2>Contacto</h2>
+        <div class="contacto-contenedor">
+            <div class="formulario-contacto">
+                <form class="formulario">
+                <div class="formulario-grupo">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="formulario-grupo">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="formulario-grupo">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="boton-enviar">Enviar mensaje</button>
+                </form>
+            </div>
+        
+            <div class="informacion-contacto">
+                <h3>Información de contacto</h3>
+                <ul class="lista-contacto">
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Dirección: Calle Falsa 123, Ciudad, País</span>
+                </li>
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <span>Teléfono: +123 456 789</span>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <span>Email: info@eventify.com</span>
+                </li>
+                </ul>
+        
+                <!-- Mapa de Google Maps -->
+                <div class="mapa">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.678901234567!2d-0.12345678901234567!3d51.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDA3JzI0LjQiTiAwwrAwNyczNy42Ilc!5e0!3m2!1ses!2ses!4v1234567890123!5m2!1ses!2ses"
+                    width="100%"
+                    height="300"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                ></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-contenedor">
+          <div class="footer-seccion">
+            <h1>Eventify</h1>
+            <p class="footer-descripcion">
+              Somos especialistas en la gestión de eventos. Ofrecemos soluciones personalizadas para hacer de tu evento una experiencia inolvidable.
+            </p>
+          </div>
+      
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Enlaces rápidos</h3>
+            <ul class="footer-lista">
+              <li><a href="#" class="footer-enlace">Inicio</a></li>
+              <li><a href="#" class="footer-enlace">Servicios</a></li>
+              <li><a href="#" class="footer-enlace">Eventos</a></li>
+              <li><a href="#" class="footer-enlace">Contacto</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Contacto</h3>
+            <ul class="footer-lista">
+              <li><i class="fas fa-map-marker-alt"></i> Dirección: Calle Falsa 123, Ciudad, País</li>
+              <li><i class="fas fa-phone"></i> Teléfono: +123 456 789</li>
+              <li><i class="fas fa-envelope"></i> Email: info@eventos.com</li>
+            </ul>
+          </div>
+      
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Síguenos</h3>
+            <div class="footer-redes">
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="footer-derechos">
+          <p>&copy; 2023 Gestión de Eventos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

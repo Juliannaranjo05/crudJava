@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="titulo">
+            <img src="../img/logov2.png" alt="Logo de la empresa" class="footer-logo">
+        </div>
+        <div class="navegador">
+            <a href="index.html">Inicio</a>
+            <a href="eventos.html">Eventos</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="inicioDeSesion">
+            <a href="inicioDeSesion.html">Iniciar Sesion</a>
+        </div>
+    </nav>
+    <section>
+        <div class="busqueda">
+            <input type="text" id="busqueda" placeholder="Buscar evento">
+            <button>Buscar</button>
+        </div>
+        <div class="contenedorAgregarEventos">
+            <div class="textoEventos">
+                <h2>Eventos</h2>
+            </div>
+            <div id="abrirModalEvento-agregar" class="agregar-Eventos">
+                <button>Agregar evento</button>
+            </div>
+        </div>
+        <div class="eventos">
+            <div class="evento">
+                <h3>Concierto de música</h3>
+                <img src="../img/1551108267663.jpeg" alt="">
+                <p>Un evento en el que artistas o bandas tocan música en vivo frente a una audiencia, ya sea en un auditorio, estadio o al aire libre.</p>
+                <a href="verMas-eventos.html">
+                  <button>Ver mas</button>
+                </a>  
+            </div>
+            <div class="evento">
+                <h3>Maratón</h3>
+                <img src="../img/descarga.jpeg" alt="">
+                <p>Una carrera de larga distancia (generalmente 42.195 km) en la que participan corredores profesionales y aficionados.</p>
+                <button>Ver mas</button>
+            </div>
+            <div class="evento">
+                <h3>Boda</h3>
+                <img src="../img/images.jpeg" alt="">
+                <p>Una ceremonia en la que dos personas se unen en matrimonio, seguida de una celebración con familiares y amigos.</p>
+                <button>Ver mas</button>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-contenedor">
+          <div class="footer-seccion">
+            <h1>Eventify</h1>
+            <p class="footer-descripcion">
+              Somos especialistas en la gestión de eventos. Ofrecemos soluciones personalizadas para hacer de tu evento una experiencia inolvidable.
+            </p>
+          </div>
+      
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Enlaces rápidos</h3>
+            <ul class="footer-lista">
+              <li><a href="#" class="footer-enlace">Inicio</a></li>
+              <li><a href="#" class="footer-enlace">Servicios</a></li>
+              <li><a href="#" class="footer-enlace">Eventos</a></li>
+              <li><a href="#" class="footer-enlace">Contacto</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Contacto</h3>
+            <ul class="footer-lista">
+              <li><i class="fas fa-map-marker-alt"></i> Dirección: Calle Falsa 123, Ciudad, País</li>
+              <li><i class="fas fa-phone"></i> Teléfono: +123 456 789</li>
+              <li><i class="fas fa-envelope"></i> Email: info@eventos.com</li>
+            </ul>
+          </div>
+      
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Síguenos</h3>
+            <div class="footer-redes">
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="footer-derechos">
+          <p>&copy; 2023 Gestión de Eventos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="modalEvento-agregar" class="modal-agregar">
+      <div class="modal-contenido-agregar">
+        <span class="cerrar-modal-agregar">&times;</span>
+        <h2>Agregar nuevo evento</h2>
+        <form class="formulario-evento-agregar">
+          <div class="formulario-grupo-agregar">
+            <label for="nombre-evento-agregar">Nombre del evento:</label>
+            <input type="text" id="nombre-evento-agregar" name="nombre-evento-agregar" required>
+          </div>
+
+          <div class="formulario-grupo-agregar">
+            <label for="descripcion-evento-agregar">Descripción:</label>
+            <textarea id="descripcion-evento-agregar" name="descripcion-evento-agregar" rows="4" required></textarea>
+          </div>
+
+          <div class="formulario-grupo-agregar">
+            <label for="fecha-evento-agregar">Fecha y hora:</label>
+            <input type="datetime-local" id="fecha-evento-agregar" name="fecha-evento-agregar" required>
+          </div>
+
+          <div class="formulario-grupo-agregar">
+            <label for="ubicacion-evento-agregar">Ubicación:</label>
+            <input type="text" id="ubicacion-evento-agregar" name="ubicacion-evento-agregar" required>
+          </div>
+
+          <div class="formulario-grupo-agregar">
+            <label for="tipo-evento-agregar">Tipo de evento:</label>
+            <select id="tipo-evento-agregar" name="tipo-evento-agregar" required>
+              <option value="concierto">Concierto</option>
+              <option value="conferencia">Conferencia</option>
+              <option value="fiesta">Fiesta</option>
+              <option value="deportivo">Deportivo</option>
+              <option value="otros">Otros</option>
+            </select>
+          </div>
+
+          <div class="formulario-grupo-agregar">
+            <label>Boletas y precios:</label>
+            <div class="boletas-contenedor-agregar">
+              <div class="boleta-item-agregar">
+                <input type="text" placeholder="Tipo de boleta (Ej: General)" required>
+                <input type="number" placeholder="Precio (Ej: 50)" min="0" required>
+                <input type="number" placeholder="Cantidad disponible" min="0" required>
+              </div>
+            </div>
+            <button type="button" class="boton-agregar-boleta-agregar">+ Agregar otra boleta</button>
+          </div>
+
+          <div class="formulario-grupo-agregar">
+            <label for="imagen-evento-agregar">Imagen del evento:</label>
+            <input type="file" id="imagen-evento-agregar" name="imagen-evento-agregar" accept="image/*">
+          </div>
+
+          <button type="submit" class="boton-enviar-agregar">Agregar evento</button>
+        </form>
+      </div>
+    </div>
+    <script>
+    document.getElementById('abrirModalEvento-agregar').addEventListener('click', function () {
+      document.getElementById('modalEvento-agregar').style.display = 'flex';
+    });
+
+    document.querySelector('.cerrar-modal-agregar').addEventListener('click', function () {
+      document.getElementById('modalEvento-agregar').style.display = 'none';
+    });
+
+    window.addEventListener('click', function (event) {
+      const modal = document.getElementById('modalEvento-agregar');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    document.querySelector('.boton-agregar-boleta-agregar').addEventListener('click', function () {
+      const boletasContenedor = document.querySelector('.boletas-contenedor-agregar');
+      const nuevaBoleta = document.createElement('div');
+      nuevaBoleta.classList.add('boleta-item-agregar');
+
+      nuevaBoleta.innerHTML = `
+        <input type="text" placeholder="Tipo de boleta (Ej: General)" required>
+        <input type="number" placeholder="Precio (Ej: 50)" min="0" required>
+        <input type="number" placeholder="Cantidad disponible" min="0" required>
+      `;
+
+      boletasContenedor.appendChild(nuevaBoleta);
+    });
+    </script>
+</body>
+</html>

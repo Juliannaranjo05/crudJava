@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="titulo">
+            <img src="../img/logov2.png" alt="Logo de la empresa" class="footer-logo">
+        </div>
+        <div class="navegador">
+            <a href="index.html">Inicio</a>
+            <a href="eventos.html">Eventos</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="inicioDeSesion">
+            <a href="inicioDeSesion.html">Iniciar Sesion</a>
+        </div>
+    </nav>
+    <section class="contenedor-Vermas-evento">
+        <div class="imagenEvento">
+            <img src="../img/images.jpeg" alt="">
+        </div>
+        <div class="informacionEvento">
+            <div class="infoDescripcion">
+                <h2>Descripcion</h2>
+                <p>Un evento en el que artistas o bandas tocan música en vivo frente a una audiencia, ya sea en un auditorio, estadio o al aire libre.</p>
+            </div>
+            <div class="infoLugar">
+                <div class="infoUbicacion">
+                    <h2>Ubicacion</h2>
+                    <p>Calle 42A 2W-74</p>
+                </div>
+                <div class="infoFecha">
+                    <h2>Fecha</h2>
+                    <p>12/12/2020</p>
+                </div>
+            </div>
+            <div class="infoVoletas">
+              <div class="infoCapacidad">
+                <h2>Boletas Vendidas</h2>
+                <div class="numCapacidad">
+                  <p>10</p><p>/35</p>
+                </div>
+              </div>
+              <div id="comprar" class="comprarBoleta">
+                <button>Comprar Entrada</button>
+              </div>
+            </div>
+        </div>
+    </section>
+    <section class="comentarios">
+        <form class="comentarios-formulario">
+            <h2>Comentarios</h2>
+          <div class="formulario-grupo">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          <div class="formulario-grupo">
+            <label for="comentario">Tu comentario:</label>
+            <textarea id="comentario" name="comentario" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="boton-enviar">Enviar comentario</button>
+        </form>
+      
+        <div class="comentarios-lista">
+          <div class="comentario">
+            <div class="comentario-autor">Juan Pérez</div>
+            <div class="comentario-fecha">10 de octubre, 2023</div>
+            <div class="comentario-texto">
+              ¡El evento fue increíble! Muy bien organizado y con excelentes ponentes.
+            </div>
+          </div>
+          <div class="comentario">
+            <div class="comentario-autor">Juan Pérez</div>
+            <div class="comentario-fecha">10 de octubre, 2023</div>
+            <div class="comentario-texto">
+              ¡El evento fue increíble! Muy bien organizado y con excelentes ponentes.
+            </div>
+          </div>
+          <div class="comentario">
+            <div class="comentario-autor">María Gómez</div>
+            <div class="comentario-fecha">9 de octubre, 2023</div>
+            <div class="comentario-texto">
+              Me encantó la experiencia. Volvería a asistir sin duda.
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="footer-contenedor">
+          <!-- Sección 1: Logo y descripción -->
+          <div class="footer-seccion">
+            <h1>Eventify</h1>
+            <p class="footer-descripcion">
+              Somos especialistas en la gestión de eventos. Ofrecemos soluciones personalizadas para hacer de tu evento una experiencia inolvidable.
+            </p>
+          </div>
+      
+          <!-- Sección 2: Enlaces rápidos -->
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Enlaces rápidos</h3>
+            <ul class="footer-lista">
+              <li><a href="#" class="footer-enlace">Inicio</a></li>
+              <li><a href="#" class="footer-enlace">Servicios</a></li>
+              <li><a href="#" class="footer-enlace">Eventos</a></li>
+              <li><a href="#" class="footer-enlace">Contacto</a></li>
+            </ul>
+          </div>
+      
+          <!-- Sección 3: Contacto -->
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Contacto</h3>
+            <ul class="footer-lista">
+              <li><i class="fas fa-map-marker-alt"></i> Dirección: Calle Falsa 123, Ciudad, País</li>
+              <li><i class="fas fa-phone"></i> Teléfono: +123 456 789</li>
+              <li><i class="fas fa-envelope"></i> Email: info@eventos.com</li>
+            </ul>
+          </div>
+      
+          <!-- Sección 4: Redes sociales -->
+          <div class="footer-seccion">
+            <h3 class="footer-titulo">Síguenos</h3>
+            <div class="footer-redes">
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="footer-redes-enlace"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="footer-derechos">
+          <p>&copy; 2023 Gestión de Eventos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!--Modal Pago-->
+    <div id="modalPagos" class="modal">
+      <div class="modal-contenido">
+        <span class="cerrar-modal">&times;</span>
+        <h2>Selecciona tu método de pago</h2>
+        <div class="metodos-pago">
+          <div class="metodo-pago">
+            <i class="fab fa-cc-visa"></i>
+            <span>Tarjeta de crédito</span>
+          </div>
+          <div class="metodo-pago">
+            <i class="fab fa-cc-mastercard"></i>
+            <span>Tarjeta de débito</span>
+          </div>
+          <div class="metodo-pago">
+            <i class="fab fa-paypal"></i>
+            <span>PayPal</span>
+          </div>
+          <div class="metodo-pago">
+            <i class="fab fa-google-pay"></i>
+            <span>Google Pay</span>
+          </div>
+          <div class="metodo-pago">
+            <i class="fab fa-apple-pay"></i>
+            <span>Apple Pay</span>
+          </div>
+          <div class="metodo-pago">
+            <i class="fas fa-university"></i>
+            <span>Transferencia bancaria</span>
+          </div>
+        </div>
+        <button class="boton-pagar">Pagar ahora</button>
+      </div>
+    </div>
+    <script src="../js/modalPago.js"></script>
+</body>
+</html>
