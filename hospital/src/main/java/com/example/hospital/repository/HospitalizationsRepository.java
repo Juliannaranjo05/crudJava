@@ -1,0 +1,11 @@
+package com.example.hospital.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.hospital.model.Hospitalizations;
+
+public interface HospitalizationsRepository extends JpaRepository
+<Hospitalizations, Integer>
+{
+
+}
