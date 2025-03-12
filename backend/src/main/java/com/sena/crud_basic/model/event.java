@@ -18,10 +18,10 @@ public class event {
    private int id_event;
 
    @Column(name = "title", length = 50, nullable = false)
-   private int title;
+   private String title;
 
    @Column(name = "description", length = 150, nullable = false)
-   private int description;
+   private String description;
 
    @Column(name = "date_event", length = 150, nullable = false)
    private String date_event;
@@ -35,7 +35,7 @@ public class event {
    @Column(name = "id_category", length = 150, nullable = false)
    private int id_category;
 
-   public event(int id_event, int title, int description, String date_event, String ubication, int id_organizer,
+   public event(int id_event, String title, String description, String date_event, String ubication, int id_organizer,
          int id_category) {
       this.id_event = id_event;
       this.title = title;
@@ -54,19 +54,19 @@ public class event {
       this.id_event = id_event;
    }
 
-   public int get_title() {
+   public String get_title() {
       return title;
    }
 
-   public void set_title(int title) {
+   public void set_title(String title) {
       this.title = title;
    }
 
-   public int get_description() {
+   public String get_description() {
       return description;
    }
 
-   public void set_description(int description) {
+   public void set_description(String description) {
       this.description = description;
    }
 

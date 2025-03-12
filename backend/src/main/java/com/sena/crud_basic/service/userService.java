@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 
 @Service
 public class userService {
-
     /*
      * save
      * findAll
@@ -47,5 +46,4 @@ public class userService {
                 LocalDateTime.now());
         return user;
     }
-
 }

@@ -651,14 +651,14 @@ button:hover {
   
 .formulario-grupo input,
 .formulario-grupo textarea {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
 }
-  
+
 .boton-enviar {
     background-color: #3498db;
     color: white;

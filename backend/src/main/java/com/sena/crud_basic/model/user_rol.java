@@ -1,34 +1,38 @@
 package com.sena.crud_basic.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
-@Entity(name = "user_rol")
-
+@Entity
+@Table(name = "user_rol")
 public class user_rol {
-   /*
-    * atributos o columnas de la entidad
-    */
+
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name = "id_user_rol")
-   private int id_user_rol;
-   
+   private int idUserRol;
+
    @ManyToOne
-   @JoinColumn(name = "id_usuario")
+   @JoinColumn(name = "id_usuario", nullable = false)
    private user user;
 
-   @Column(name = "id_rol", length = 50, nullable = false)
-   private int id_rol;
+   @Column(name = "id_rol", nullable = false)
+   private int idRol;
 
-   public user_rol(com.sena.crud_basic.model.user user, int id_rol) {
+   public user_rol() {
+   }
+
+   public user_rol(int idUserRol, user user, int idRol) {
+      this.idUserRol = idUserRol;
       this.user = user;
-      this.id_rol = id_rol;
+      this.idRol = idRol;
+   }
+
+   public int getIdUserRol() {
+      return idUserRol;
+   }
+
+   public void setIdUserRol(int idUserRol) {
+      this.idUserRol = idUserRol;
    }
 
    public user getUser() {
@@ -39,11 +43,11 @@ public class user_rol {
       this.user = user;
    }
 
-   public int get_name_rol() {
-      return id_rol;
+   public int getIdRol() {
+      return idRol;
    }
 
-   public void set_name_rol(int id_rol) {
-      this.id_rol = id_rol;
+   public void setIdRol(int idRol) {
+      this.idRol = idRol;
    }
 }

@@ -3,11 +3,8 @@ package com.sena.crud_basic.DTO;
 public class userDTO {
 
     private String nombre;
-
     private String email;
-
     private String contrasena;
-
     private int telefono;
 
     public userDTO(String nombre, String email, String contrasena, int telefono) {
@@ -48,5 +45,4 @@ public class userDTO {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
-
 }

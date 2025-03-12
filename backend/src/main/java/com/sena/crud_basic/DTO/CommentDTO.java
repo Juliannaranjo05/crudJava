@@ -1,33 +1,16 @@
-package com.sena.crud_basic.model;
+package com.sena.crud_basic.DTO;
 
-import jakarta.persistence.*;
-
-@Entity(name = "comment")
-public class Comment {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_comment")
+public class CommentDTO {
     private int id_comment;
-
-    @Column(name = "id_user", nullable = false)
     private int id_user;
-
-    @Column(name = "id_event", nullable = false)
     private int id_event;
-
-    @Column(name = "comment", length = 150, nullable = false)
     private String comment;
-
-    @Column(name = "date_comment", length = 150, nullable = false)
     private String date_comment;
 
-    // Constructor vacío
-    public Comment() {
+    public CommentDTO() {
     }
 
-    // Constructor con parámetros
-    public Comment(int id_comment, int id_user, int id_event, String comment, String date_comment) {
+    public CommentDTO(int id_comment, int id_user, int id_event, String comment, String date_comment) {
         this.id_comment = id_comment;
         this.id_user = id_user;
         this.id_event = id_event;
@@ -35,7 +18,6 @@ public class Comment {
         this.date_comment = date_comment;
     }
 
-    // Getters y Setters
     public int getId_comment() {
         return id_comment;
     }

@@ -1,24 +1,15 @@
-package com.sena.crud_basic.model;
+package com.sena.crud_basic.DTO;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "categoria")
-public class Categoria {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria")
+public class CategoriaDTO {
     private int idCategoria;
-
-    @Column(name = "nombre_categoria", nullable = false, length = 50)
     private String nombreCategoria;
 
     // Constructor vacío
-    public Categoria() {}
+    public CategoriaDTO() {}
 
-    // Constructor con parámetros (sin id)
-    public Categoria(String nombreCategoria) {
+    // Constructor con parámetros
+    public CategoriaDTO(int idCategoria, String nombreCategoria) {
+        this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
     }
 
