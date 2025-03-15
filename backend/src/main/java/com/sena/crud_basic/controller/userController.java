@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sena.crud_basic.DTO.responseDTO;
 import com.sena.crud_basic.DTO.userDTO;
-import com.sena.crud_basic.model.user;
 import com.sena.crud_basic.service.userService;
 
 import org.springframework.beans.factory.annotation.Autowired;

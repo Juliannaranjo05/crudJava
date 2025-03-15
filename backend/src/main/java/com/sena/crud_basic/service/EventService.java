@@ -10,7 +10,6 @@ import com.sena.crud_basic.repository.Iuser;
 import com.sena.crud_basic.repository.CategoriaRepository;
 import java.util.List;
 import java.util.Optional;
-import java.time.LocalDate;
 
 @Service
 public class EventService {
