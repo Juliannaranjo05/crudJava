@@ -1,8 +1,11 @@
 package com.sena.crud_basic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.sena.crud_basic.service.ValorationService;
+import com.sena.crud_basic.DTO.responseDTO;
 import com.sena.crud_basic.model.valoration;
 import java.util.List;
 import java.util.Optional;
@@ -28,8 +31,13 @@ public class ValorationController {
 
     // Crear o actualizar una valoración
     @PostMapping
-    public valoration save(@RequestBody valoration valoration) {
-        return valorationService.save(valoration);
+    public ResponseEntity<?> create(@RequestBody valoration valoration) {
+        responseDTO response = valorationService.save(valoration);
+        if (response.getStatus().equals(HttpStatus.OK.toString())) {
+            return ResponseEntity.ok(response.getMessage());
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response.getMessage());
+        }
     }
 
     // Eliminar una valoración por ID

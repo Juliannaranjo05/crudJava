@@ -3,6 +3,7 @@ package com.sena.crud_basic.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.sena.crud_basic.service.RolesService;
+import com.sena.crud_basic.DTO.responseDTO;
 import com.sena.crud_basic.model.roles;
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +26,7 @@ public class RolesController {
     }
 
     @PostMapping
-    public roles save(@RequestBody roles roles) {
+    public responseDTO save(@RequestBody roles roles) {
         return rolesService.save(roles);
     }
 

@@ -1,8 +1,11 @@
 package com.sena.crud_basic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.sena.crud_basic.service.EventService;
+import com.sena.crud_basic.DTO.responseDTO;
 import com.sena.crud_basic.model.event;
 import java.util.List;
 import java.util.Optional;
@@ -29,9 +32,15 @@ public class EventController {
 
     // Guardar o actualizar evento
     @PostMapping
-    public event save(@RequestBody event event) {
-        return eventService.save(event);
+    public ResponseEntity<?> save(@RequestBody event event) {
+        responseDTO response = eventService.save(event);
+        if (response.getStatus().equals(HttpStatus.OK.toString())) {
+            return ResponseEntity.ok(response.getMessage());
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response.getMessage());
+        }
     }
+
 
     // Eliminar evento por ID
     @DeleteMapping("/{id}")

@@ -29,13 +29,13 @@ public class user {
    private String contrasena;
 
    @Column(name = "telefono", length = 150, nullable = false)
-   private int telefono;
+   private String telefono;
 
    @Column(name = "fecha_registro", nullable = false)
    private LocalDateTime fecha_registro;
 
    // constructor
-   public user(int id_usuario, String nombre, String email, String contrasena, int telefono,
+   public user(int id_usuario, String nombre, String email, String contrasena, String telefono,
          LocalDateTime fecha_registro) {
       this.id_usuario = id_usuario;
       this.nombre = nombre;
@@ -75,12 +75,12 @@ public class user {
       this.contrasena = contrasena;
    }
 
-   public int get_telefono() {
+   public String get_telefono() {
       return telefono;
    }
 
    // set del phone
-   public void set_telefono(int telefono) {
+   public void set_telefono(String telefono) {
       this.telefono = telefono;
    }
 
