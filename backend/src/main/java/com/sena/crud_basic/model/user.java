@@ -1,5 +1,6 @@
 package com.sena.crud_basic.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -29,20 +30,28 @@ public class user {
    private String contrasena;
 
    @Column(name = "telefono", length = 150, nullable = false)
-   private String telefono;
+   private int telefono;
 
    @Column(name = "fecha_registro", nullable = false)
    private LocalDateTime fecha_registro;
 
-   // constructor
-   public user(int id_usuario, String nombre, String email, String contrasena, String telefono,
-         LocalDateTime fecha_registro) {
+   @Column(name="status",nullable =false, columnDefinition = "boolean default true ")
+   private boolean status;
+
+   
+   
+   public user() {
+   }
+
+   public user(int id_usuario, String nombre, String email, String contrasena, int telefono,
+         LocalDateTime fecha_registro, boolean status) {
       this.id_usuario = id_usuario;
       this.nombre = nombre;
       this.email = email;
       this.contrasena = contrasena;
       this.telefono = telefono;
       this.fecha_registro = fecha_registro;
+      this.status = status;
    }
 
    // get del ID
@@ -75,12 +84,12 @@ public class user {
       this.contrasena = contrasena;
    }
 
-   public String get_telefono() {
+   public int get_telefono() {
       return telefono;
    }
 
    // set del phone
-   public void set_telefono(String telefono) {
+   public void set_telefono(int telefono) {
       this.telefono = telefono;
    }
 
@@ -101,4 +110,13 @@ public class user {
       this.email = email;
    }
 
+   public boolean getStatus() {
+      return status;
+   }
+
+   public void setStatus(boolean status) {
+      this.status = status;
+   }
+
+   
 }

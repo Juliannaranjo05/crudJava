@@ -8,9 +8,9 @@ public class userDTO {
 
     private String contrasena;
 
-    private String telefono;
+    private int telefono;
 
-    public userDTO(String nombre, String email, String contrasena, String telefono) {
+    public userDTO(String nombre, String email, String contrasena, int telefono) {
         this.nombre = nombre;
         this.email = email;
         this.contrasena = contrasena;
@@ -41,11 +41,12 @@ public class userDTO {
         this.contrasena = contrasena;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
+
 }

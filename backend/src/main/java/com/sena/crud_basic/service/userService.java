@@ -12,7 +12,6 @@ import com.sena.crud_basic.repository.Iuser;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 @Service
 public class userService {
@@ -28,7 +27,16 @@ public class userService {
     private Iuser data;
 
     public List<user> findAll() {
-        return data.findAll();
+
+        // return data.findAll();
+        return data.getListUserActive();
+
+    }
+
+    public List<user> getListUserForName(String filter) {
+        // return data.findAll();
+        return data.getListUserForName(filter);
+
     }
 
     public Optional<user> findById(int id) {
@@ -36,11 +44,21 @@ public class userService {
     }
 
     public responseDTO deleteUser(int id) {
-        if (!findById(id).isPresent()) {
-            return new responseDTO(HttpStatus.OK.toString(), "El registro no existe");
+        Optional<user> user=findById(id);
+        if (!user.isPresent()) {
+            responseDTO respuesta = new responseDTO(
+                    HttpStatus.OK.toString(),
+                    "The register does not exist");
+            return respuesta;
         }
-        data.deleteById(id);
-        return new responseDTO(HttpStatus.OK.toString(), "Se eliminó correctamente");
+        user.get().setStatus(false);
+        data.save(user.get());
+        // data.deleteById(id);
+        
+        responseDTO respuesta = new responseDTO(
+                HttpStatus.OK.toString(),
+                "Se eliminó correctamente");
+        return respuesta;
     }
 
     // register and update
@@ -53,26 +71,14 @@ public class userService {
                     "El nombre debe estar entre 1 y 50 caracteres");
             return respuesta;
         }
-
-        // Validar email con regex
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        if (!Pattern.matches(emailRegex, userDTO.getEmail())) {
-            return new responseDTO(HttpStatus.BAD_REQUEST.toString(), "El email no es válido");
-        }
-
-        String passwordRegex = "^(?=.*[A-Z])(?=.*\\d).{8,}$";
-        if (!Pattern.matches(passwordRegex, userDTO.getContrasena())) {
-            return new responseDTO(HttpStatus.BAD_REQUEST.toString(), "La contraseña debe tener al menos 8 caracteres, una mayúscula y un número");
-        }
-        String telefonoRegex = "^\\d{10}$";
-        if (!Pattern.matches(telefonoRegex, userDTO.getTelefono())) {
-            return new responseDTO(HttpStatus.BAD_REQUEST.toString(), "El teléfono debe tener exactamente 10 dígitos numéricos");
-        }
-        
-        // Guardar usuario si pasa las validaciones
+        // otras condiciones
+        // n
         user userRegister = converToModel(userDTO);
         data.save(userRegister);
-        return new responseDTO(HttpStatus.OK.toString(), "Se guardó correctamente");
+        responseDTO respuesta = new responseDTO(
+                HttpStatus.OK.toString(),
+                "Se guardó correctamente");
+        return respuesta;
     }
 
     public userDTO convertToDTO(user user) {
@@ -91,7 +97,8 @@ public class userService {
                 userDTO.getEmail(),
                 userDTO.getContrasena(),
                 userDTO.getTelefono(),
-                LocalDateTime.now());
+                LocalDateTime.now(),
+                true);
         return user;
     }
 
