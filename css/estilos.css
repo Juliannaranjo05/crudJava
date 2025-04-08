@@ -1,9 +1,10 @@
-/* === General === */ 
+/* === General === */
 body {
     background-color: #c8d6de;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* === Navbar === */
@@ -70,66 +71,52 @@ body {
 
 /* === Sección Hospital (Visión y Misión con Círculos) === */
 .hospital-info {
-    background-color: #c8d6de;
-    text-align: center;
-    padding: 50px 0;
-    margin-bottom: 60px;
+    background-color: #e6f0f8;
+    padding: 60px 20px;
 }
 
 .hospital-name {
-    font-size: 36px;
+    font-size: 2.0rem;
     font-weight: bold;
-    margin-bottom: 30px;
+    color: #0d6efd;
 }
 
-.vision-mision-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+.info-box {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
 }
 
-.info-circle {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, filter 0.3s;
-    color: white;
+.info-box:hover {
+    transform: translateY(-5px);
+}
+
+.info-box h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0d6efd;
+    margin-bottom: 15px;
+}
+
+.info-box p {
+    font-size: 1.05rem;
+    color: #333;
+    line-height: 1.6;
 }
 
 .vision {
-    background-color: #ffcc00;
+    border-left: 5px solid #ffc107;
 }
 
 .mission {
-    background-color: #ff5733;
-}
-
-.info-circle:hover {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
-
-.info-circle h2 {
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-.info-circle p {
-    font-size: 16px;
-    padding: 0 10px;
+    border-left: 5px solid #dc3545;
 }
 
 /* === Sección de Servicios === */
 .services {
-    padding: 50px 0;
+    padding: 50px 20px;
     text-align: center;
 }
 
@@ -143,20 +130,25 @@ body {
 .container-cards {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-top: -30px;
+    gap: 30px;
+    margin-top: 40px; /* 👈 agrega esta línea o ajusta el valor */
 }
 
 .card {
     width: 300px;
-    height: 350px;
+    height: 380px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
 }
 
 .card:hover {
@@ -166,11 +158,24 @@ body {
 .card-img-top {
     height: 180px;
     object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0 10px;
+}
+
+.card-text {
+    font-size: 15px;
+    margin-bottom: 15px;
 }
 
 .btn {
     font-size: 14px;
-    padding: 5px 10px;
+    padding: 8px 12px;
 }
 
 /* === Footer === */
@@ -204,26 +209,94 @@ body {
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
+    margin-top: 10px;
 }
 
 .social-icon {
-    font-size: 24px;
+    font-size: 26px;
     color: white;
+    background-color: #0d6efd;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
     text-decoration: none;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-    color: #ffcc00;
+    transform: scale(1.1);
+    background-color: #000000;
+    color: #0d6efd;
 }
 
-hr {
-    border-top: 1px solid white;
-    width: 80%;
-    margin: 20px auto;
+
+/* === Sección ¿Quiénes Somos? === */
+.quienes-somos-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+    background-color: #eaf1f7;
 }
 
-.footer-bottom {
-    font-size: 14px;
+.quienes-somos-img {
+    max-width: 100%;
+    width: 350px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.quienes-somos-text {
+    max-width: 600px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.quienes-somos-text h2 {
+    font-size: 2rem;
+    color: #0d6efd;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.quienes-somos-text p {
+    margin-bottom: 15px;
+}
+
+.quienes-somos-text ul {
+    padding-left: 20px;
+}
+
+.quienes-somos-text li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* === Responsividad general === */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .quienes-somos-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
 }

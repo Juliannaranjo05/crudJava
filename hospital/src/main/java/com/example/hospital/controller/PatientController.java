@@ -16,7 +16,7 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
-    // ✅ Crear un nuevo paciente
+    //  Crear un nuevo paciente
     @PostMapping("/")
     public ResponseEntity<Object> registerPatient(@RequestBody PatientDTO patientDTO) {
         String response = patientService.save(patientDTO);
@@ -27,13 +27,13 @@ public class PatientController {
         }
     }
 
-    // ✅ Obtener todos los pacientes
+    //  Obtener todos los pacientes
     @GetMapping("/")
     public ResponseEntity<Object> getAllPatients() {
         return new ResponseEntity<>(patientService.findAll(), HttpStatus.OK);
     }
 
-    // ✅ Obtener un paciente por su ID
+    //  Obtener un paciente por su ID
     @GetMapping("/{id}")
     public ResponseEntity<Object> getPatientById(@PathVariable Long id) {
         Optional<PatientDTO> patient = patientService.findById(id).map(patientService::convertToDTO);
@@ -42,7 +42,7 @@ public class PatientController {
                 : new ResponseEntity<>("Paciente no encontrado", HttpStatus.NOT_FOUND);
     }
 
-    // ✅ Eliminar un paciente por su ID
+    //  Eliminar un paciente por su ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deletePatient(@PathVariable Long id) {
         String response = patientService.deletePatient(id);
@@ -50,6 +50,17 @@ public class PatientController {
             return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    // Actualizar un paciente por su ID
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updatePatient(@PathVariable Long id, @RequestBody PatientDTO patientDTO) {
+        String response = patientService.updatePatient(id, patientDTO); // Llamamos al servicio para actualizar
+        if (response.equals("Paciente actualizado correctamente")) {
+            return new ResponseEntity<>(response, HttpStatus.OK); // Si la actualización fue exitosa
+        } else {
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); // Si hubo un error
         }
     }
 }

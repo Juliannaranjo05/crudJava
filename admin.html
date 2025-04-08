@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Hospital General</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/hospital1.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="Index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- Título -->
+<div class="container-fluid mt-4 text-center">
+    <h1 class="mb-4">Administrador de Pacientes</h1>
+</div>
+
+<!-- Formulario de registro / edición -->
+<div class="container-fluid px-5">
+    <form id="paciente-form" class="row g-3 bg-light p-4 rounded shadow-sm">
+        <div class="col-md-4">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ej. Juan Pérez" required>
+        </div>
+        <div class="col-md-4">
+            <label for="documento" class="form-label">Documento</label>
+            <input type="text" class="form-control" id="documento" placeholder="Número de cédula" required>
+        </div>
+        <div class="col-md-4">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="telefono" placeholder="Ej. 3123456789">
+        </div>
+        <div class="col-md-4">
+            <label for="correo" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correo" placeholder="Ej. ejemplo@email.com">
+        </div>
+        <div class="col-md-4">
+            <label for="fecha" class="form-label">Fecha de Ingreso</label>
+            <input type="date" class="form-control" id="fecha">
+        </div>
+        <div class="col-md-4">
+            <label for="estado" class="form-label">Estado</label>
+            <select class="form-select" id="estado">
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+                <option value="en tratamiento">En Tratamiento</option>
+            </select>
+        </div>
+
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-primary">Guardar Paciente</button>
+        </div>
+    </form>
+</div>
+
+<!-- Tabla de pacientes -->
+<div class="container-fluid mt-5 px-5">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center bg-white shadow-sm">
+            <thead class="table-primary">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Documento</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-pacientes">
+                <!-- Registros se agregarán dinámicamente aquí -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Sección de información del hospital -->
+                <div class="footer-section">
+                    <h5>🏥 Hospital General</h5>
+                    <p>Comprometidos con la salud y el bienestar de nuestra comunidad.</p>
+                </div>
+
+                <!-- Sección de contacto -->
+                <div class="footer-section">
+                    <h5>📞 Contacto</h5>
+                    <p>📍 Dirección: Calle 123, Ciudad, País</p>
+                    <p>📞 Teléfono: +57 123 456 7890</p>
+                    <p>📧 Correo: contacto@hospital.com</p>
+                </div>
+
+                <!-- Sección de redes sociales -->
+                <div class="footer-section">
+                    <h5>🌍 Síguenos</h5>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com" class="social-icon" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com" class="social-icon" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>                
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hospital General - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enlace a FontAwesome para los iconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
