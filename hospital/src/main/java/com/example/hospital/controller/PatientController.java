@@ -1,66 +1,42 @@
 package com.example.hospital.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.example.hospital.model.Patient;
+import com.example.hospital.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.hospital.dto.PatientDTO;
-import com.example.hospital.service.PatientService;
-import java.util.Optional;
-
+import java.util.List;
 @RestController
-@RequestMapping("/api/v1/patients")
+@RequestMapping("/api/patients")
+@CrossOrigin(origins = "*") // Permitir llamadas desde cualquier origen (útil para frontend)
 public class PatientController {
 
     @Autowired
     private PatientService patientService;
 
-    //  Crear un nuevo paciente
-    @PostMapping("/")
-    public ResponseEntity<Object> registerPatient(@RequestBody PatientDTO patientDTO) {
-        String response = patientService.save(patientDTO);
-        if (response.equals("Paciente guardado exitosamente")) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-        }
+    @GetMapping
+    public List<Patient> getAll() {
+        return patientService.getAllPatients();
     }
 
-    //  Obtener todos los pacientes
-    @GetMapping("/")
-    public ResponseEntity<Object> getAllPatients() {
-        return new ResponseEntity<>(patientService.findAll(), HttpStatus.OK);
-    }
-
-    //  Obtener un paciente por su ID
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getPatientById(@PathVariable Long id) {
-        Optional<PatientDTO> patient = patientService.findById(id).map(patientService::convertToDTO);
-        return patient.isPresent()
-                ? new ResponseEntity<>(patient.get(), HttpStatus.OK)
-                : new ResponseEntity<>("Paciente no encontrado", HttpStatus.NOT_FOUND);
+    public Patient getById(@PathVariable Long id) {
+        return patientService.getPatientById(id);
     }
 
-    //  Eliminar un paciente por su ID
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deletePatient(@PathVariable Long id) {
-        String response = patientService.deletePatient(id);
-        if (response.equals("Paciente eliminado correctamente")) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-        }
+    @PostMapping
+    public Patient create(@RequestBody Patient patient) {
+        return patientService.savePatient(patient);
     }
 
-    // Actualizar un paciente por su ID
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updatePatient(@PathVariable Long id, @RequestBody PatientDTO patientDTO) {
-        String response = patientService.updatePatient(id, patientDTO); // Llamamos al servicio para actualizar
-        if (response.equals("Paciente actualizado correctamente")) {
-            return new ResponseEntity<>(response, HttpStatus.OK); // Si la actualización fue exitosa
-        } else {
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); // Si hubo un error
-        }
+    public Patient update(@PathVariable Long id, @RequestBody Patient patient) {
+        patient.setPatientId(id);
+        return patientService.updatePatient(patient);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        patientService.deletePatient(id);
     }
 }

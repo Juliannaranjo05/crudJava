@@ -17,7 +17,7 @@ public class Patient {
     @Column(nullable = false)
     private LocalDate birthDate;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 10) // Asegúrate de que la longitud sea suficiente
     private String gender;
 
     @Column(length = 20)
