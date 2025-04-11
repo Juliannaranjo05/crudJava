@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:8080/api/patients";
+const URL_API = "http://172.30.0.91:8080/api/patients";
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarPacientes();
