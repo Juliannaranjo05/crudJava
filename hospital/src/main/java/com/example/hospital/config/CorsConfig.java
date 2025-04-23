@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-
 @Configuration
 public class CorsConfig {
 
@@ -18,6 +17,7 @@ public class CorsConfig {
         config.addAllowedOrigin("http://172.30.0.91");
         config.addAllowedOrigin("http://172.30.6.79:5500");
         config.addAllowedOrigin("http://localhost:5500");
+        config.addAllowedOrigin("http://localhost"); // <- aquí
         config.addAllowedOrigin("https://tu-dominio-produccion.com");
 
         // Permitir métodos HTTP específicos
@@ -27,7 +27,7 @@ public class CorsConfig {
         config.addAllowedMethod("DELETE");
 
         // Permitir encabezados específicos
-        config.addAllowedHeader("*"); // Para permitir todos los encabezados
+        config.addAllowedHeader("*");
         config.addAllowedHeader("Authorization");
         config.addAllowedHeader("Content-Type");
 

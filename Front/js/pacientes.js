@@ -1,65 +1,138 @@
-const URL_API = "http://172.30.0.91:8080/api/patients";
+let pacientes = [];
+let modoEdicion = false;
+let idEditar = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-    cargarPacientes();
+const formulario = document.getElementById("pacienteForm");
+const tabla = document.getElementById("tablaPacientes");
+const filtro = document.getElementById("filtroNombre");
 
-    const form = document.getElementById('pacienteForm');
+const nameInput = document.getElementById("name");
+const birthDateInput = document.getElementById("birthDate");
+const genderInput = document.getElementById("gender");
+const phoneInput = document.getElementById("phone");
+const addressInput = document.getElementById("address");
+const patientIdInput = document.getElementById("patientId");
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+const API_URL = "http://localhost:8080/api/patients";
 
-        const paciente = {
-            name: document.getElementById('name').value,
-            birthDate: document.getElementById('birthDate').value,
-            gender: document.getElementById('gender').value,
-            phone: document.getElementById('phone').value,
-            address: document.getElementById('address').value
-        };
+// Cargar pacientes al iniciar
+window.onload = () => {
+  cargarPacientes();
+};
 
-        try {
-            const response = await fetch(URL_API, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(paciente)
-            });
+function cargarPacientes() {
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      pacientes = data;
+      mostrarPacientes(pacientes);
+    })
+    .catch(err => console.error("Error al cargar pacientes:", err));
+}
 
-            if (!response.ok) {
-                throw new Error("Error al guardar paciente");
-            }
+function mostrarPacientes(lista) {
+  tabla.innerHTML = "";
+  lista.forEach(p => {
+    tabla.innerHTML += `
+      <tr>
+        <td>${p.name}</td>
+        <td>${p.birthDate}</td>
+        <td>${p.gender}</td>
+        <td>${p.phone}</td>
+        <td>${p.address}</td>
+        <td>
+          <button class="btn btn-warning btn-sm me-2" onclick="editarPaciente(${p.id})">Editar</button>
+          <button class="btn btn-danger btn-sm" onclick="eliminarPaciente(${p.id})">Eliminar</button>
+        </td>
+      </tr>
+    `;
+  });
+}
 
-            form.reset();
-            cargarPacientes();
-            alert("✅ Paciente registrado correctamente.");
-        } catch (error) {
-            console.error("Error en la solicitud:", error);
-            alert("❌ Hubo un error al guardar el paciente.");
-        }
-    });
+formulario.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const paciente = {
+    name: nameInput.value,
+    birthDate: birthDateInput.value,
+    gender: genderInput.value,
+    phone: phoneInput.value,
+    address: addressInput.value
+  };
+
+  if (modoEdicion && idEditar !== null) {
+    // Editar paciente
+    fetch(`${API_URL}/${idEditar}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(paciente)
+    })
+      .then(res => res.json())
+      .then(() => {
+        resetForm();
+        cargarPacientes();
+      })
+      .catch(err => console.error("Error al actualizar paciente:", err));
+  } else {
+    // Crear paciente
+    fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(paciente)
+    })
+      .then(res => res.json())
+      .then(() => {
+        resetForm();
+        cargarPacientes();
+      })
+      .catch(err => console.error("Error al crear paciente:", err));
+  }
 });
 
-async function cargarPacientes() {
-    try {
-        const response = await fetch(URL_API);
-        const pacientes = await response.json();
+function editarPaciente(id) {
+  const paciente = pacientes.find(p => p.id === id);
+  if (paciente) {
+    modoEdicion = true;
+    idEditar = id;
+    nameInput.value = paciente.name;
+    birthDateInput.value = paciente.birthDate;
+    genderInput.value = paciente.gender;
+    phoneInput.value = paciente.phone;
+    addressInput.value = paciente.address;
+  }
+}
 
-        const tabla = document.getElementById('tablaPacientes');
-        if (tabla) {
-            tabla.innerHTML = ""; // Limpia la tabla antes de cargar nuevos datos
-            pacientes.forEach(p => {
-                tabla.innerHTML += `
-                    <tr>
-                        <td>${p.patientId}</td>
-                        <td>${p.name}</td>
-                        <td>${p.birthDate}</td>
-                        <td>${p.gender}</td>
-                        <td>${p.phone}</td>
-                        <td>${p.address}</td>
-                    </tr>
-                `;
-            });
-        }
-    } catch (error) {
-        console.error("Error al cargar pacientes:", error);
-        alert("❌ Error al cargar la lista de pacientes.");
+function eliminarPaciente(id) {
+  // Verifica que el id es válido antes de hacer la solicitud
+  if (id) {
+    if (confirm("¿Estás seguro de que quieres eliminar este paciente?")) {
+      fetch(`${API_URL}/${id}`, {
+        method: "DELETE"
+      })
+        .then(res => {
+          if (res.ok) {
+            // Si la eliminación fue exitosa, recarga los pacientes
+            cargarPacientes();
+          } else {
+            console.error("Error al eliminar el paciente:", res.statusText);
+          }
+        })
+        .catch(err => console.error("Error al eliminar paciente:", err));
     }
+  } else {
+    console.error("ID del paciente no válido");
+  }
+}
+
+filtro.addEventListener("input", () => {
+  const texto = filtro.value.toLowerCase();
+  const filtrados = pacientes.filter(p => p.name.toLowerCase().includes(texto));
+  mostrarPacientes(filtrados);
+});
+
+function resetForm() {
+  formulario.reset();
+  modoEdicion = false;
+  idEditar = null;
+  patientIdInput.value = "";
 }
