@@ -1,124 +1,466 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administración de Pacientes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gill+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      /* === General === */
+      body {
+        background-color: #c8d6de;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hospital General</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/estilos.css">
-</head>
+      /* === Navbar === */
+      .navbar {
+        width: 100%;
+        background-color: #4684f9 !important;
+        padding: 10px 20px;
+      }
 
-<body>
+      .navbar-brand img {
+        width: 70px;
+        height: 70px;
+      }
 
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="images/hospital1.png" alt="Logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <i class="fas fa-bars"></i>
-      </button>
+      .navbar-nav .nav-item {
+        margin: 0 15px;
+      }
 
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="Index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
-          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-          <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
-        </ul>
+      .nav-link {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffffff !important;
+        transition: 0.3s;
+      }
+
+      .nav-link:hover {
+        color: #323232 !important;
+      }
+
+      /* Botón personalizado */
+      .btn-custom {
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        background-color: transparent;
+        transition: 0.3s;
+      }
+
+      .btn-custom:hover {
+        background-color: #ffffff;
+        color: #4684f9;
+      }
+
+      /* === Barra de Navegación Superior Personalizada === */
+      .custom-nav {
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+        padding: 10px;
+        background-color: #b4d5f7;
+      }
+
+      .custom-nav .nav-item {
+        margin: 5px;
+      }
+
+      .custom-nav .nav-link {
+        color: white;
+      }
+
+      .custom-nav .nav-link.disabled {
+        color: gray;
+        pointer-events: none;
+      }
+
+      /* === Footer === */
+      .footer {
+        background-color: #4684f9;
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .footer-section {
+        flex: 1;
+        min-width: 250px;
+        margin: 10px;
+      }
+
+      .footer h5 {
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .footer-section p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 10px;
+      }
+
+      .social-icon {
+        font-size: 26px;
+        color: white;
+        background-color: #0d6efd;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        transform: scale(1.1);
+        background-color: #000000;
+        color: #0d6efd;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="images/hospital1.png" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <div class="container py-5">
-    <h2 class="text-center mb-4">Gestión de Pacientes</h2>
-
-    <!-- Formulario de Paciente -->
-    <form id="pacienteForm" class="border p-4 rounded shadow-sm bg-light">
-        <input type="hidden" id="patientId">
-        <div class="mb-3">
-            <label for="name" class="form-label">Nombre completo</label>
-            <input type="text" class="form-control" id="name" required>
+    <div class="container mt-5">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">Registro de Pacientes</h1>
         </div>
-        <div class="mb-3">
-            <label for="birthDate" class="form-label">Fecha de nacimiento</label>
-            <input type="date" class="form-control" id="birthDate" required>
-        </div>
-        <div class="mb-3">
-            <label for="gender" class="form-label">Género</label>
-            <select class="form-select" id="gender" required>
-                <option value="" disabled selected>Selecciona una opción</option>
+        <div class="card-body">
+          <form id="patientForm" class="mb-4">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre Completo:</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="birthDate" class="form-label">Fecha de Nacimiento:</label>
+              <input type="date" class="form-control" id="birthDate" name="birthDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Género:</label>
+              <select class="form-select" id="gender" name="gender" required>
+                <option value="" disabled selected>Seleccione el género</option>
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
                 <option value="Otro">Otro</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="phone" class="form-label">Teléfono</label>
-            <input type="tel" class="form-control" id="phone" required>
-        </div>
-        <div class="mb-3">
-            <label for="address" class="form-label">Dirección</label>
-            <input type="text" class="form-control" id="address" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Teléfono:</label>
+              <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Ej: 3001234567">
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Dirección:</label>
+              <textarea class="form-control" id="address" name="address" rows="2"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Paciente</button>
+          </form>
 
-    <!-- Filtro de búsqueda -->
-    <input type="text" id="filtroNombre" placeholder="Buscar por nombre..." class="form-control my-3">
-
-    <!-- Tabla de Pacientes -->
-    <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Fecha de Nacimiento</th>
-                <th>Género</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="tablaPacientes"></tbody>
-    </table>
-</div>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h5>🏥 Hospital General</h5>
-          <p>Comprometidos con la salud y el bienestar de nuestra comunidad.</p>
-        </div>
-        <div class="footer-section">
-          <h5>📞 Contacto</h5>
-          <p>📍 Dirección: Calle 123, Ciudad, País</p>
-          <p>📞 Teléfono: +57 123 456 7890</p>
-          <p>📧 Correo: contacto@hospital.com</p>
-        </div>
-        <div class="footer-section">
-          <h5>🌍 Síguenos</h5>
-          <div class="social-icons">
-            <a href="https://www.facebook.com" class="social-icon" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com" class="social-icon" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
+          <div class="mb-4">
+            <h2>Lista de Pacientes</h2>
+            <input type="text" id="filterInput" class="form-control mb-2" placeholder="Filtrar por nombre...">
+            <table class="table table-striped table-hover" id="patientTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Fecha de Nacimiento</th>
+                  <th>Género</th>
+                  <th>Teléfono</th>
+                  <th>Dirección</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="7" class="text-center">Cargando...</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-      <hr>
-      <div class="footer-bottom">
-        <p>&copy; 2024 Hospital General - Todos los derechos reservados.</p>
+    </div>
+
+    <div class="modal fade" id="editPatientModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Paciente</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="editPatientForm">
+              <div class="mb-3">
+                <label for="editName" class="form-label">Nombre Completo:</label>
+                <input type="text" class="form-control" id="editName" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="editBirthDate" class="form-label">Fecha de Nacimiento:</label>
+                <input type="date" class="form-control" id="editBirthDate" name="birthDate" required>
+              </div>
+              <div class="mb-3">
+                <label for="editGender" class="form-label">Género:</label>
+                <select class="form-select" id="editGender" name="gender" required>
+                  <option value="" disabled selected>Seleccione el género</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="editPhone" class="form-label">Teléfono:</label>
+                <input type="tel" class="form-control" id="editPhone" name="phone" pattern="[0-9]{10}" placeholder="Ej: 3001234567">
+              </div>
+              <div class="mb-3">
+                <label for="editAddress" class="form-label">Dirección:</label>
+                <textarea class="form-control" id="editAddress" name="address" rows="2"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="updatePatientButton">Actualizar Paciente</button>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/pacientes.js" defer></script>
-</body>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h5>🏥 Hospital General</h5>
+            <p>Comprometidos con la salud y el bienestar de nuestra comunidad.</p>
+          </div>
+          <div class="footer-section">
+            <h5>📞 Contacto</h5>
+            <p>📍 Dirección: Calle 123, Ciudad, País</p>
+            <p>📞 Teléfono: +57 123 456 7890</p>
+            <p>📧 Correo: contacto@hospital.com</p>
+          </div>
+          <div class="footer-section">
+            <h5>🌍 Síguenos</h5>
+            <div class="social-icons">
+              <a href="https://www.facebook.com" class="social-icon" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.instagram.com" class="social-icon" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Hospital General - Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const patientForm = document.getElementById("patientForm");
+      const patientTable = document.getElementById("patientTable");
+      const filterInput = document.getElementById("filterInput");
+      const editPatientModalEl = document.getElementById('editPatientModal');  // Elemento del modal
+      const editPatientModal = new bootstrap.Modal(editPatientModalEl); // Instancia del modal de Bootstrap
+      const editPatientFormElement = document.getElementById("editPatientForm");
+      const updatePatientButton = document.getElementById("updatePatientButton");
+
+
+      const url = "http://localhost:8080/api/patients";
+
+      let patients = [];
+      let editingPatientId = null;
+
+      function displayPatients(filteredPatients = patients) {
+        const patientTableBody = patientTable.querySelector("tbody");
+        patientTableBody.innerHTML = "";
+
+        // Ordenar los pacientes por ID de menor a mayor
+        filteredPatients.sort((a, b) => a.patientId - b.patientId);
+
+        filteredPatients.forEach((patient) => {
+          const row = patientTableBody.insertRow();
+          const idCell = row.insertCell();
+          const nameCell = row.insertCell();
+          const birthDateCell = row.insertCell();
+          const genderCell = row.insertCell();
+          const phoneCell = row.insertCell();
+          const addressCell = row.insertCell();
+          const actionsCell = row.insertCell();
+
+          idCell.textContent = patient.patientId;
+          nameCell.textContent = patient.name;
+          birthDateCell.textContent = patient.birthDate;
+          genderCell.textContent = patient.gender;
+          phoneCell.textContent = patient.phone || "";
+          addressCell.textContent = patient.address || "";
+
+          const editButton = document.createElement("button");
+          editButton.textContent = "Editar";
+          editButton.className = "btn btn-primary btn-sm me-2";
+          editButton.addEventListener("click", () => showEditModal(patient));
+          actionsCell.appendChild(editButton);
+
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Eliminar";
+          deleteButton.className = "btn btn-danger btn-sm";
+          deleteButton.addEventListener("click", () => deletePatient(patient.patientId));
+          actionsCell.appendChild(deleteButton);
+        });
+      }
+
+      function getPatients() {
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            patients = data;
+            displayPatients();
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function savePatient(event) {
+        event.preventDefault();
+
+        const patient = {
+          name: document.getElementById("name").value,
+          birthDate: document.getElementById("birthDate").value,
+          gender: document.getElementById("gender").value,
+          phone: document.getElementById("phone").value,
+          address: document.getElementById("address").value,
+        };
+
+        const method = editingPatientId ? "PUT" : "POST";
+        const urlToUse = editingPatientId ? `${url}/${editingPatientId}` : url;
+
+        fetch(urlToUse, {
+          method: method,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(patient),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (!editingPatientId) {
+              patients.push(data);
+            } else {
+              const index = patients.findIndex((p) => p.patientId === data.patientId);
+              patients[index] = data;
+            }
+            displayPatients();
+            patientForm.reset();
+            document.getElementById("gender").selectedIndex = 0;
+            editingPatientId = null;
+            document.querySelector('button[type="submit"]').textContent = "Guardar Paciente";
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function showEditModal(patient) {
+        editingPatientId = patient.patientId;
+        document.getElementById("editName").value = patient.name;
+        document.getElementById("editBirthDate").value = patient.birthDate;
+        document.getElementById("editGender").value = patient.gender;
+        document.getElementById("editPhone").value = patient.phone || "";
+        document.getElementById("editAddress").value = patient.address || "";
+        editPatientModal.show();
+      }
+
+      function updatePatient() {
+        const updatedPatientData = {
+          name: document.getElementById("editName").value,
+          birthDate: document.getElementById("editBirthDate").value,
+          gender: document.getElementById("editGender").value,
+          phone: document.getElementById("editPhone").value,
+          address: document.getElementById("editAddress").value,
+        };
+
+        fetch(`${url}/${editingPatientId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedPatientData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const index = patients.findIndex((p) => p.patientId === data.patientId);
+            patients[index] = data;
+            displayPatients();
+            editPatientModal.hide();
+            editingPatientId = null;
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function deletePatient(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar este paciente?")) {
+          fetch(`${url}/${id}`, {
+            method: "DELETE",
+          })
+            .then(() => {
+              patients = patients.filter((p) => p.patientId !== id);
+              displayPatients();
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+      }
+
+      filterInput.addEventListener("input", (event) => {
+        const searchTerm = event.target.value.toLowerCase();
+        const filteredPatients = patients.filter((patient) =>
+          patient.name.toLowerCase().includes(searchTerm)
+        );
+        displayPatients(filteredPatients);
+      });
+
+      patientForm.addEventListener("submit", savePatient);
+      updatePatientButton.addEventListener("click", updatePatient);
+
+      getPatients();
+    </script>
+  </body>
 </html>
