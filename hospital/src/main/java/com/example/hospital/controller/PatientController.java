@@ -3,6 +3,8 @@ package com.example.hospital.controller;
 import com.example.hospital.model.Patient;
 import com.example.hospital.repository.IPatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,30 +17,46 @@ public class PatientController {
     @Autowired
     private IPatientRepository patientRepository;
 
+    // Obtener todos los pacientes
     @GetMapping
-    public List<Patient> getAllPatients() {
-        return patientRepository.findAll();
+    public ResponseEntity<List<Patient>> getAllPatients() {
+        List<Patient> patients = patientRepository.findAll();
+        return new ResponseEntity<>(patients, HttpStatus.OK);
     }
 
+    // Crear o actualizar un paciente
     @PostMapping
-    public Patient createPatient(@RequestBody Patient patient) {
-        return patientRepository.save(patient);
+    public ResponseEntity<Patient> savePatient(@RequestBody Patient patient) {
+        Patient savedPatient = patientRepository.save(patient);
+        return new ResponseEntity<>(savedPatient, HttpStatus.CREATED);
     }
 
+    // Actualizar un paciente existente
     @PutMapping("/{id}")
-    public Patient updatePatient(@PathVariable Long id, @RequestBody Patient updatedPatient) {
-        return patientRepository.findById(id).map(patient -> {
-            patient.setName(updatedPatient.getName());
-            patient.setBirthDate(updatedPatient.getBirthDate());
-            patient.setGender(updatedPatient.getGender());
-            patient.setPhone(updatedPatient.getPhone());
-            patient.setAddress(updatedPatient.getAddress());
-            return patientRepository.save(patient);
-        }).orElseThrow();
+    public ResponseEntity<Patient> updatePatient(@PathVariable("id") Long id, @RequestBody Patient patientDetails) {
+        if (!patientRepository.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Patient patient = patientRepository.findById(id).orElseThrow();
+        patient.setName(patientDetails.getName());
+        patient.setBirthDate(patientDetails.getBirthDate());
+        patient.setGender(patientDetails.getGender());
+        patient.setPhone(patientDetails.getPhone());
+        patient.setAddress(patientDetails.getAddress());
+
+        Patient updatedPatient = patientRepository.save(patient);
+        return new ResponseEntity<>(updatedPatient, HttpStatus.OK);
     }
 
+    // Eliminar un paciente
     @DeleteMapping("/{id}")
-    public void deletePatient(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePatient(@PathVariable("id") Long id) {
+        if (!patientRepository.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
         patientRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
