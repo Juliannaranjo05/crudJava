@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctores - Administración de Hospital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gill+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/administrador.css">
+</head>
+
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="images/hospital1.png" alt="Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link active" href="administrador.html">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <h2>Gestión de Doctores</h2>
+
+    <!-- Formulario de ingreso de doctor -->
+    <form id="doctorForm" class="mt-4">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="specialty" class="form-label">Especialidad</label>
+        <select class="form-select" id="specialty" required>
+          <option value="">Seleccione especialidad</option>
+          <option value="Cardiología">Cardiología</option>
+          <option value="Pediatría">Pediatría</option>
+          <option value="Dermatología">Dermatología</option>
+          <option value="Neurología">Neurología</option>
+          <option value="Ginecología">Ginecología</option>
+          <option value="Traumatología">Traumatología</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" id="phone">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Dirección</label>
+        <textarea class="form-control" id="address"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Guardar Doctor</button>
+    </form>
+
+    <!-- Tabla de doctores -->
+    <h3 class="mt-5">Listado de Doctores</h3>
+    <input type="text" id="filterInput" class="form-control mb-3" placeholder="Buscar por nombre...">
+
+    <table class="table table-striped" id="doctorTable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Especialidad</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Dirección</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Modal de edición -->
+  <div class="modal" tabindex="-1" id="editDoctorModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Doctor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editDoctorForm">
+            <div class="mb-3">
+              <label for="editName" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="editName" required>
+            </div>
+            <div class="mb-3">
+              <label for="editSpecialty" class="form-label">Especialidad</label>
+              <select class="form-select" id="editSpecialty" required>
+                <option value="">Seleccione especialidad</option>
+                <option value="Cardiología">Cardiología</option>
+                <option value="Pediatría">Pediatría</option>
+                <option value="Dermatología">Dermatología</option>
+                <option value="Neurología">Neurología</option>
+                <option value="Ginecología">Ginecología</option>
+                <option value="Traumatología">Traumatología</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="editPhone" class="form-label">Teléfono</label>
+              <input type="text" class="form-control" id="editPhone">
+            </div>
+            <div class="mb-3">
+              <label for="editEmail" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="editEmail">
+            </div>
+            <div class="mb-3">
+              <label for="editAddress" class="form-label">Dirección</label>
+              <textarea class="form-control" id="editAddress"></textarea>
+            </div>
+            <button type="button" id="updateDoctorButton" class="btn btn-primary">Actualizar Doctor</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer mt-5">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h5>🏥 Hospital General</h5>
+          <p>Comprometidos con la salud y el bienestar de nuestra comunidad.</p>
+        </div>
+        <div class="footer-section">
+          <h5>📞 Contacto</h5>
+          <p>📍 Dirección: Calle 123, Ciudad, País</p>
+          <p>📞 Teléfono: +57 123 456 7890</p>
+          <p>📧 Correo: contacto@hospital.com</p>
+        </div>
+        <div class="footer-section">
+          <h5>🌍 Síguenos</h5>
+          <div class="social-icons">
+            <a href="https://www.facebook.com" class="social-icon" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" class="social-icon" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Hospital General - Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/doctors.js"></script>
+
+</body>
+
+</html>

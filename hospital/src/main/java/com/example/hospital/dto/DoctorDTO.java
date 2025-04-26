@@ -1,23 +1,14 @@
 package com.example.hospital.dto;
 
 public class DoctorDTO {
+
     private Long doctorId;
     private String name;
     private String specialty;
     private String phone;
     private String email;
 
-    public DoctorDTO() {
-    }
-
-    public DoctorDTO(Long doctorId, String name, String specialty, String phone, String email) {
-        this.doctorId = doctorId;
-        this.name = name;
-        this.specialty = specialty;
-        this.phone = phone;
-        this.email = email;
-    }
-
+    // Getters and Setters
     public Long getDoctorId() {
         return doctorId;
     }
@@ -57,6 +48,4 @@ public class DoctorDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    
 }

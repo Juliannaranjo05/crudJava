@@ -11,20 +11,22 @@
   </head>
   <body class="bg-light">
 
+    <!-- Navegación - Estructura idéntica entre todas las páginas -->
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="#">
           <img src="images/hospital1.png" alt="Logo">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <i class="fas fa-bars"></i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
             <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-            <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+            <li class="nav-item"><a class="nav-link active" href="administrador.html">Admin</a></li>
           </ul>
         </div>
       </div>
@@ -71,7 +73,6 @@
             <table class="table table-striped table-hover" id="patientTable">
               <thead>
                 <tr>
-
                   <th>Nombre</th>
                   <th>Fecha de Nacimiento</th>
                   <th>Género</th>
@@ -135,6 +136,7 @@
       </div>
     </div>
 
+    <!-- Footer - Estructura idéntica entre todas las páginas -->
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
@@ -151,10 +153,10 @@
           <div class="footer-section">
             <h5>🌍 Síguenos</h5>
             <div class="social-icons">
-              <a href="https://www.facebook.com" class="social-icon" target="_blank">
+              <a href="https://www.facebook.com" class="social-icon" target="_blank" aria-label="Facebook">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="https://www.instagram.com" class="social-icon" target="_blank">
+              <a href="https://www.instagram.com" class="social-icon" target="_blank" aria-label="Instagram">
                 <i class="fab fa-instagram"></i>
               </a>
             </div>
