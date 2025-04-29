@@ -10,7 +10,7 @@ body {
 /* === Navbar === */
 .navbar {
     width: 100%;
-    background-color: #4684f9 !important;
+    background-color: #00a20e !important;
     padding: 10px 20px;
 }
 
@@ -44,7 +44,7 @@ body {
 
 .btn-custom:hover {
     background-color: #ffffff;
-    color: #4684f9;
+    color: #00a20e;
 }
 
 /* === Barra de Navegación Superior Personalizada === */
@@ -71,7 +71,7 @@ body {
 
 /* === Footer === */
 .footer {
-    background-color: #4684f9;
+    background-color: #00a20e;
     color: white;
     padding: 40px 0;
     text-align: center;
@@ -107,7 +107,7 @@ body {
 .social-icon {
     font-size: 26px;
     color: white;
-    background-color: #0d6efd;
+    background-color: #00a20e;
     width: 45px;
     height: 45px;
     display: flex;
@@ -121,6 +121,9 @@ body {
 .social-icon:hover {
     transform: scale(1.1);
     background-color: #000000;
-    color: #0d6efd;
+    color: #00a20e;
+}
+h2 button {
+    background: #00a20e !important;
 }
 

@@ -4,29 +4,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class InvoiceDTO {
-    private Long invoiceId;
-    private Long patientId;
-    private LocalDate date;
-    private BigDecimal total;
 
-    public InvoiceDTO() {
-    }
+    private Long patientId;  // ID del paciente
+    private LocalDate date;  // Fecha de la factura
+    private BigDecimal total;  // Total de la factura
 
-    public InvoiceDTO(Long invoiceId, Long patientId, LocalDate date, BigDecimal total) {
-        this.invoiceId = invoiceId;
-        this.patientId = patientId;
-        this.date = date;
-        this.total = total;
-    }
-
-    public Long getInvoiceId() {
-        return invoiceId;
-    }
-
-    public void setInvoiceId(Long invoiceId) {
-        this.invoiceId = invoiceId;
-    }
-
+    // Getters y setters
     public Long getPatientId() {
         return patientId;
     }
@@ -50,6 +33,4 @@ public class InvoiceDTO {
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
-
-    // Getters y Setters
 }
